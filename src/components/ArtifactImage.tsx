@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Compass } from 'lucide-react';
 
 interface ArtifactImageProps {
@@ -10,6 +10,10 @@ interface ArtifactImageProps {
 
 export function ArtifactImage({ src, alt, title, className = '' }: ArtifactImageProps) {
   const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    setHasError(false);
+  }, [src]);
 
   if (hasError) {
     return (

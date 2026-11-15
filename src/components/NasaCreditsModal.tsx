@@ -93,16 +93,21 @@ export function NasaCreditsModal({ isOpen, onClose }: NasaCreditsModalProps) {
           ))}
         </div>
 
+        <div className="rounded-lg bg-[#0F1624] border border-amber-500/40 p-4 text-xs sm:text-sm text-slate-200 leading-relaxed">
+          <span className="font-semibold text-amber-300">Note on Devcraftsman (2026):</span>{' '}
+          Devcraftsman (“Mission Archivist”) is the Earth-based educational relay interface built in 2026 for the NASA Space Apps Challenge (Janesville / Chicago Space Apps Relay) rather than a NASA flight spacecraft. The five historical mission artifacts below are official NASA flight hardware.
+        </div>
+
         <div>
           <h3 className="text-sm font-semibold text-slate-200 mb-3">
-            Verified Spacecraft Registry (NSSDC Identifiers)
+            Verified Spacecraft &amp; Ground Relay Registry
           </h3>
           <div className="overflow-x-auto rounded-lg border border-slate-800">
             <table className="w-full text-left text-xs">
               <thead className="bg-[#0F1624] text-slate-400 border-b border-slate-800">
                 <tr>
-                  <th className="py-2.5 px-3 font-medium">Spacecraft</th>
-                  <th className="py-2.5 px-3 font-medium">NSSDC ID</th>
+                  <th className="py-2.5 px-3 font-medium">Artifact / Station</th>
+                  <th className="py-2.5 px-3 font-medium">Registry ID</th>
                   <th className="py-2.5 px-3 font-medium">Zone</th>
                   <th className="py-2.5 px-3 font-medium">Coordinates</th>
                 </tr>
@@ -110,7 +115,14 @@ export function NasaCreditsModal({ isOpen, onClose }: NasaCreditsModalProps) {
               <tbody className="divide-y divide-slate-800/80 text-slate-300">
                 {NASA_ARTIFACTS.map((item) => (
                   <tr key={item.id} className="bg-[#090D16]">
-                    <td className="py-2.5 px-3 font-medium text-slate-100">{item.name}</td>
+                    <td className="py-2.5 px-3 font-medium text-slate-100">
+                      {item.name}
+                      {item.isGroundStation && (
+                        <span className="block text-[11px] font-normal text-amber-300">
+                          Earth-Based Educational Relay (Non-Flight)
+                        </span>
+                      )}
+                    </td>
                     <td className="py-2.5 px-3 font-mono tabular-nums text-amber-300">
                       {item.telemetry.nssdcId}
                     </td>

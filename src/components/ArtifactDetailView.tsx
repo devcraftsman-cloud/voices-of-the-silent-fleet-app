@@ -80,13 +80,23 @@ export function ArtifactDetailView({
           />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#07090E]/90 via-[#07090E]/40 to-transparent pointer-events-none" />
           <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-mono text-slate-300">
-            <span>NSSDC ID: {artifact.telemetry.nssdcId}</span>
+            <span>
+              {artifact.isGroundStation ? 'Station ID' : 'NSSDC ID'}: {artifact.telemetry.nssdcId}
+            </span>
             <span>{artifact.telemetry.distanceFromEarthLabel}</span>
           </div>
         </div>
 
         <div className="lg:col-span-7 flex flex-col justify-between bg-[#0B101A] border border-slate-800 rounded-xl p-6 sm:p-7">
           <div>
+            {artifact.specialBadge && (
+              <div className="mb-3">
+                <span className="inline-block px-2.5 py-1 rounded-md bg-amber-400/10 border border-amber-400/50 text-xs font-mono font-medium text-amber-300">
+                  {artifact.specialBadge}
+                </span>
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-slate-400 mb-2">
               <span className="text-slate-200 font-medium">{artifact.zoneLabel}</span>
               <span aria-hidden="true">·</span>
@@ -111,7 +121,9 @@ export function ArtifactDetailView({
 
           <div className="mt-6 pt-5 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
             <div>
-              <span className="text-xs text-slate-400 block">Launch Date &amp; Vehicle</span>
+              <span className="text-xs text-slate-400 block">
+                {artifact.isGroundStation ? 'Commissioned & Platform' : 'Launch Date & Vehicle'}
+              </span>
               <span className="text-sm font-mono tabular-nums font-medium text-slate-100 mt-0.5 block">
                 {artifact.telemetry.launchDate}
               </span>
@@ -121,7 +133,9 @@ export function ArtifactDetailView({
             </div>
 
             <div>
-              <span className="text-xs text-slate-400 block">Landing / Location Coordinates</span>
+              <span className="text-xs text-slate-400 block">
+                {artifact.isGroundStation ? 'Ground Station Coordinates' : 'Landing / Location Coordinates'}
+              </span>
               <span className="text-sm font-mono tabular-nums font-medium text-cyan-300 mt-0.5 block">
                 {artifact.telemetry.coordinates}
               </span>
@@ -150,7 +164,9 @@ export function ArtifactDetailView({
             </div>
 
             <div>
-              <span className="text-xs text-slate-400 block">Key Scientific Discovery</span>
+              <span className="text-xs text-slate-400 block">
+                {artifact.isGroundStation ? 'Primary Relay Mission' : 'Key Scientific Discovery'}
+              </span>
               <span className="text-sm text-slate-100 leading-snug mt-0.5 block">
                 {artifact.telemetry.keyDiscovery}
               </span>

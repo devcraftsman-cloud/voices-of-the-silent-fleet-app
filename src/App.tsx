@@ -18,6 +18,7 @@ const FILTER_TABS: Array<{ id: FilterZone; label: string }> = [
   { id: 'moon', label: 'The Moon' },
   { id: 'mars', label: 'Mars' },
   { id: 'deep-space', label: 'Deep Space' },
+  { id: 'earth', label: 'Earth Relay' },
 ];
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
       moon: NASA_ARTIFACTS.filter((a) => a.zone === 'moon').length,
       mars: NASA_ARTIFACTS.filter((a) => a.zone === 'mars').length,
       'deep-space': NASA_ARTIFACTS.filter((a) => a.zone === 'deep-space').length,
+      earth: NASA_ARTIFACTS.filter((a) => a.zone === 'earth').length,
     }),
     []
   );
@@ -79,22 +81,22 @@ export default function App() {
                   Left behind on distant worlds, still speaking through science.
                 </h1>
                 <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
-                  From a silent glass mirror on the Moon to a golden record drifting past the stars, explore the real stories of NASA’s historic spacecraft—and talk directly with them.
+                  From a silent glass mirror on the Moon to a golden record drifting past the stars—plus our 2026 Earth Mission Control relay—explore the real stories of NASA’s historic spacecraft and talk directly with them.
                 </p>
               </div>
 
               {/* Clean 4-Column Mission Summary Strip (Zero Nested Cards) */}
               <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-slate-800 border-y border-slate-800 py-5 gap-y-4">
                 <div className="lg:pr-6">
-                  <span className="text-xs text-slate-400 block">Archive Roster</span>
+                  <span className="text-xs text-slate-400 block">Fleet &amp; Relay Roster</span>
                   <span className="text-xl sm:text-2xl font-semibold font-mono tabular-nums text-slate-100 mt-1 block">
-                    5 Spacecraft
+                    5 NASA + 1 Relay
                   </span>
                 </div>
                 <div className="pl-4 lg:px-6">
-                  <span className="text-xs text-slate-400 block">Celestial Regions</span>
+                  <span className="text-xs text-slate-400 block">Celestial Zones</span>
                   <span className="text-xl sm:text-2xl font-semibold font-mono tabular-nums text-slate-100 mt-1 block">
-                    3 Deep Frontiers
+                    Earth + 3 Frontiers
                   </span>
                 </div>
                 <div className="pt-4 lg:pt-0 lg:px-6">

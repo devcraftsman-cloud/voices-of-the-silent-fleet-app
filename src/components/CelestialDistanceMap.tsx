@@ -13,6 +13,12 @@ const ZONE_STATIONS: Array<{
   lightTime: string;
 }> = [
   {
+    zone: 'earth',
+    title: 'Earth Relay',
+    distance: '0 km',
+    lightTime: 'Ground Control',
+  },
+  {
     zone: 'moon',
     title: 'The Moon',
     distance: '384,400 km',
@@ -49,7 +55,7 @@ export function CelestialDistanceMap({
             Outpost Distances Across the Solar System
           </h2>
           <p className="text-sm text-slate-400 mt-1">
-            Select any spacecraft beacon below to open its 3-chapter story and start a conversation.
+            Select any beacon—from Earth Mission Control to interstellar space—to open its 3-chapter story and start a conversation.
           </p>
         </div>
         <span className="text-xs font-mono tabular-nums text-slate-400 whitespace-nowrap">
@@ -57,7 +63,7 @@ export function CelestialDistanceMap({
         </span>
       </div>
 
-      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {ZONE_STATIONS.map((station, index) => {
           const zoneArtifacts = artifacts.filter((a) => a.zone === station.zone);
           const isDimmed = activeZone !== 'all' && activeZone !== station.zone;

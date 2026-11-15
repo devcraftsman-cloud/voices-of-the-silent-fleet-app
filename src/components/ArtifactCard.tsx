@@ -16,7 +16,13 @@ export function ArtifactCard({ artifact, onSelect }: ArtifactCardProps) {
       : 'text-slate-400';
 
   return (
-    <article className="group flex flex-col bg-[#0C111C] border border-slate-800 hover:border-cyan-500/60 rounded-xl overflow-hidden transition-colors duration-200">
+    <article
+      className={`group flex flex-col rounded-xl overflow-hidden transition-colors duration-200 border ${
+        artifact.isGroundStation
+          ? 'bg-[#0D1320] border-amber-500/45 hover:border-amber-400'
+          : 'bg-[#0C111C] border-slate-800 hover:border-cyan-500/60'
+      }`}
+    >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#07090E]">
         <ArtifactImage
           src={artifact.imageUrl}
@@ -25,6 +31,13 @@ export function ArtifactCard({ artifact, onSelect }: ArtifactCardProps) {
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0C111C] via-[#0C111C]/50 to-transparent pointer-events-none" />
+        {artifact.specialBadge && (
+          <div className="absolute top-3 left-3">
+            <span className="inline-block px-2.5 py-1 rounded-md bg-[#07090E]/90 border border-amber-400/70 text-[11px] font-mono font-medium text-amber-300 backdrop-blur-sm">
+              {artifact.specialBadge}
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="flex-1 flex flex-col justify-between p-5 sm:p-6">
@@ -42,7 +55,7 @@ export function ArtifactCard({ artifact, onSelect }: ArtifactCardProps) {
           <h3 className="text-xl font-semibold text-slate-50 leading-snug">
             {artifact.name}
             {artifact.nickname && artifact.nickname !== artifact.name && (
-              <span className="text-amber-400 font-normal"> “{artifact.nickname}”</span>
+              <span className="text-amber-400 font-normal"> (“{artifact.nickname}”)</span>
             )}
           </h3>
 
@@ -52,9 +65,13 @@ export function ArtifactCard({ artifact, onSelect }: ArtifactCardProps) {
         <div className="mt-5 pt-4 border-t border-slate-800/90 space-y-4">
           <div className="flex items-baseline justify-between gap-4 text-xs">
             <div>
-              <span className="text-slate-400 block">Planned vs. Actual</span>
+              <span className="text-slate-400 block">
+                {artifact.isGroundStation ? 'Relay Coordinates' : 'Planned vs. Actual'}
+              </span>
               <span className="font-mono tabular-nums text-slate-200 font-medium mt-0.5 block">
-                {artifact.telemetry.plannedLifespan} → {artifact.telemetry.actualLifespan}
+                {artifact.isGroundStation
+                  ? artifact.telemetry.coordinates
+                  : `${artifact.telemetry.plannedLifespan} → ${artifact.telemetry.actualLifespan}`}
               </span>
             </div>
             <span className="font-mono tabular-nums text-amber-300 shrink-0">

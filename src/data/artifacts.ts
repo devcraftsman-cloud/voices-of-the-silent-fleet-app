@@ -1,4 +1,11 @@
-export type CelestialZone = 'moon' | 'mars' | 'deep-space';
+import apolloLrrrImg from '../assets/images/artifact_apollo_lrrr_1794780102474.jpg';
+import opportunityRoverImg from '../assets/images/artifact_opportunity_rover_1794780103990.jpg';
+import insightLanderImg from '../assets/images/artifact_insight_lander_1794780104384.jpg';
+import ingenuityHelicopterImg from '../assets/images/artifact_ingenuity_helicopter_1794780104977.jpg';
+import voyagerProbeImg from '../assets/images/artifact_voyager_probe_1794780105972.jpg';
+import devcraftsmanRelayImg from '../assets/images/artifact_devcraftsman_architect_1794785402196.jpg';
+
+export type CelestialZone = 'moon' | 'mars' | 'deep-space' | 'earth';
 
 export interface StoryChapter {
   id: number;
@@ -29,6 +36,8 @@ export interface NASAArtifact {
   id: string;
   name: string;
   nickname?: string;
+  specialBadge?: string;
+  isGroundStation?: boolean;
   zone: CelestialZone;
   zoneLabel: string;
   statusLabel: string;
@@ -59,7 +68,7 @@ export const NASA_ARTIFACTS: NASAArtifact[] = [
     shortRole: '100-prism optical mirror array on Tranquility Base',
     summary:
       'Deployed by Buzz Aldrin during Apollo 11, this zero-power glass prism panel still bounces Earth-fired lasers back to astronomers after more than five decades.',
-    imageUrl: '/src/assets/images/artifact_apollo_lrrr_1794780102474.jpg',
+    imageUrl: apolloLrrrImg,
     imageAlt:
       'Apollo 11 Lunar Laser Ranging Retroreflector resting on grey lunar regolith with astronaut bootprints and a crescent Earth in the black lunar sky',
     greeting:
@@ -139,7 +148,7 @@ export const NASA_ARTIFACTS: NASAArtifact[] = [
     shortRole: 'Six-wheeled solar geologist across Meridiani Planum',
     summary:
       'Designed for a 90-day sprint, Opportunity drove a marathon 45.16 kilometers over nearly 15 years, proving ancient Mars once held liquid water.',
-    imageUrl: '/src/assets/images/artifact_opportunity_rover_1794780103990.jpg',
+    imageUrl: opportunityRoverImg,
     imageAlt:
       'NASA Opportunity Mars rover with dusty solar wings and panoramic camera mast perched near the rocky rim of a Martian crater',
     greeting:
@@ -219,7 +228,7 @@ export const NASA_ARTIFACTS: NASAArtifact[] = [
     shortRole: 'Stationary geophysical station listening to Mars’s interior',
     summary:
       'Equipped with a robotic arm and an ultra-sensitive copper-domed seismometer, InSight recorded 1,319 marsquakes to map the Red Planet’s hidden core.',
-    imageUrl: '/src/assets/images/artifact_insight_lander_1794780104384.jpg',
+    imageUrl: insightLanderImg,
     imageAlt:
       'NASA InSight Mars Lander on reddish-ochre Elysium Planitia plains with its two circular solar arrays and copper-domed seismometer resting on the soil',
     greeting:
@@ -299,7 +308,7 @@ export const NASA_ARTIFACTS: NASAArtifact[] = [
     shortRole: 'First powered, controlled aircraft on another planet',
     summary:
       'Built for just 5 experimental hops, Ingenuity completed 72 flights across Jezero Crater before a rotor landing mishap turned it into a stationary outpost.',
-    imageUrl: '/src/assets/images/artifact_ingenuity_helicopter_1794780104977.jpg',
+    imageUrl: ingenuityHelicopterImg,
     imageAlt:
       'NASA Ingenuity Mars Helicopter standing on rippled golden-red sand dunes in Jezero Crater with carbon-fiber coaxial blades and top solar panel',
     greeting:
@@ -379,7 +388,7 @@ export const NASA_ARTIFACTS: NASAArtifact[] = [
     shortRole: 'Farthest human-made spacecraft, now in interstellar space',
     summary:
       'Launched in 1977 for a Grand Tour of Jupiter and Saturn, Voyager 1 crossed the heliopause in 2012 and still whispers home from over 24 billion km away.',
-    imageUrl: '/src/assets/images/artifact_voyager_probe_1794780105972.jpg',
+    imageUrl: voyagerProbeImg,
     imageAlt:
       'NASA Voyager 1 space probe gliding through deep interstellar space with its large white parabolic dish antenna and gold-plated Golden Record',
     greeting:
@@ -443,6 +452,88 @@ export const NASA_ARTIFACTS: NASAArtifact[] = [
         fieldNoteTitle: 'A Message in a Cosmic Bottle',
         fieldNoteText:
           'The Golden Record’s aluminum cover is etched with simple pictograms showing how to play the phonograph stylus and a pulsar map pinpointing our Sun’s exact location in the galaxy.',
+      },
+    ],
+  },
+  {
+    id: 'devcraftsman-2026',
+    name: 'Devcraftsman',
+    nickname: 'Mission Archivist',
+    specialBadge: '2026 • Earth Mission Control',
+    isGroundStation: true,
+    zone: 'earth',
+    zoneLabel: 'Earth — Janesville / Chicago Space Apps Relay',
+    statusLabel: 'Online Relay',
+    statusGlyph: '●',
+    statusTone: 'active',
+    dateSpan: '2026 – Present',
+    shortRole: 'Earth-side telemetry relay & Space Apps storytelling bridge',
+    summary:
+      'Built in 2026 for the NASA Space Apps Challenge, Devcraftsman is the Earth-side telemetry relay and storytelling bridge keeping the voices of NASA’s distant explorers alive for the next generation of builders.',
+    imageUrl: devcraftsmanRelayImg,
+    imageAlt:
+      'Earth-side mission control and deep space telemetry relay studio overlooking a twilight Midwestern horizon and deep-space dish antenna',
+    greeting:
+      'Welcome to Earth Mission Control at the Janesville / Chicago Space Apps Relay! Unlike Oppy or Voyager 1, I am an Earth-based educational relay built in 2026 to turn official NASA archives into living stories. Want to know how open space data powers this app—or how you can build your own?',
+    starterQuestions: [
+      'How do you pull from official NASA archives?',
+      'Why build an Earth relay for abandoned hardware?',
+      'How can students start building with open space data?',
+    ],
+    telemetry: {
+      launchDate: '2026 (Space Apps Build)',
+      launchVehicle: 'Earth-Side Relay · Web & Gemini AI',
+      locationName: 'Janesville / Chicago Space Apps Relay',
+      coordinates: '42.6828° N, 89.0187° W',
+      plannedLifespan: '48-hour Space Apps sprint',
+      actualLifespan: '2026 – Present (Ongoing)',
+      lifespanMultiplierLabel: 'Open educational bridge',
+      plannedRatioPercent: 25,
+      keyDiscovery:
+        'Connects NASA SMD, NSSDC, PDS & JPL archives to first-person educational storytelling',
+      nssdcId: 'EARTH-RELAY-2026',
+      distanceFromEarthLabel: '0 km (Ground Control)',
+      distanceRank: 0,
+    },
+    chapters: [
+      {
+        id: 1,
+        label: 'Chapter 1: The Signal Awakens — 2026 Space Apps Build',
+        title: 'The Signal Awakens — 2026 Space Apps Build',
+        timeframe: '2026 NASA Space Apps Challenge',
+        narrative: [
+          'Every great mission starts with a question on Earth. Sitting at 42.6828° N, 89.0187° W along the Janesville and Chicago Space Apps corridor, I was designed for the 2026 NASA Space Apps Challenge around one heartfelt idea: discarded spacecraft are never truly forgotten if their discoveries continue to teach us.',
+          'Instead of letting decades of lunar reflectors, Mars landers, and interstellar probes live only inside dense engineering spreadsheets, Devcraftsman was architected as a living Ground Station—connecting young explorers directly to the Silent Fleet.',
+        ],
+        fieldNoteTitle: 'Not a Flight Spacecraft — An Earth Relay',
+        fieldNoteText:
+          'Unlike the five NASA flight artifacts in this archive, Devcraftsman operates right here on Earth as an educational web and AI relay station translating real mission telemetry into interactive stories.',
+      },
+      {
+        id: 2,
+        label: 'Chapter 2: Translating Telemetry Into Wonder',
+        title: 'Translating Telemetry Into Wonder',
+        timeframe: 'NASA SMD · NSSDC · PDS · JPL Archives',
+        narrative: [
+          'Behind every first-person reply you read here sits verified public data from NASA’s Science Mission Directorate (SMD), the NSSDC Master Catalog, the Planetary Data System (PDS), and JPL Mission Archives—including exact launch dates, sol totals, and landing coordinates.',
+          'Using Gemini as a grounded storytelling voice, I bridge cold coordinates and engineering logs into warm, clear conversations so a 12-year-old student can ask Opportunity about Martian blueberries or ask Voyager 1 what interstellar plasma feels like.',
+        ],
+        fieldNoteTitle: 'Why Open Space Data Matters',
+        fieldNoteText:
+          'NASA makes planetary datasets free and public for everyone on Earth. That means students, teachers, and independent software builders can explore the exact same marsquake catalogs and rover maps used by mission scientists.',
+      },
+      {
+        id: 3,
+        label: 'Chapter 3: Passing the Torch to Future Explorers',
+        title: 'Passing the Torch to Future Explorers',
+        timeframe: '2026 – Next Generation of Builders',
+        narrative: [
+          'Whether a spacecraft rests silently under Martian dust or speeds beyond the heliopause, its science belongs to the curious minds who pick up the signal next. Every student who asks a question here is taking their first step into planetary science and aerospace engineering.',
+          'My mission at Earth Mission Control is never finished: keep the archives open, spark curiosity, and remind every young builder that the next great explorer might start right from a laptop at home.',
+        ],
+        fieldNoteTitle: 'Start Your Own Space Build',
+        fieldNoteText:
+          'Curious to explore raw NASA datasets yourself? Visit science.nasa.gov or pds.nasa.gov to browse mission photos, Mars weather logs, and orbital trajectories ready for your own science fair or hackathon project.',
       },
     ],
   },
