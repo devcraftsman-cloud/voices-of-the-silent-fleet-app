@@ -1,0 +1,6 @@
+{
+  "name": "Voices of the Silent Fleet",
+  "description": "An interactive, story-driven educational archive exploring NASA's abandoned and active spacecraft across the Moon, Mars, and deep space.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
